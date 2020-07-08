@@ -1,0 +1,19 @@
+version: '3.2'
+services:
+        foreman:
+                build: .
+                image: foreman2.0:latest
+                network_mode: "host"
+                extra_hosts:
+                - "insightsof.xyz.com:10.10.10.10"
+                container_name: insightsof.xyz.com
+                hostname: insightsof.xyz.com
+                cap_add:
+                - SYS_ADMIN
+                security_opt:
+                - seccomp:unconfined
+                volumes:
+                - /root/backup:/tmp/backup
+                - /sys/fs/cgroup:/sys/fs/cgroup:ro
+                command: bash -c "sh /root/Foreman-Installer.sh"
+                restart: always
