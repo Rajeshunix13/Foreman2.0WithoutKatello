@@ -9,10 +9,10 @@ if [[ -f /etc/foreman-installer/scenarios.d/last_scenario.yaml ]]
                        --enable-foreman-proxy-plugin-ansible \
                        --enable-foreman-proxy-plugin-openscap \
 	               --enable-foreman-proxy-plugin-remote-execution-ssh \
-	               --enable-foreman-compute-vmware \
 	               --enable-foreman-plugin-remote-execution \
 	               --enable-foreman-plugin-openscap \
-	               --enable-foreman-plugin-ansible
+	               --enable-foreman-plugin-ansible \
+		       --skip-checks-i-know-better
 	if [[ $?  == 0 ]]
     		then
       			foreman-rake foreman_openscap:bulk_upload:default
